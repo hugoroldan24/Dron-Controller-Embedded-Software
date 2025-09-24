@@ -1,10 +1,3 @@
-/*
- * dron_structs.h
- *
- *  Created on: Aug 19, 2025
- *      Author: 34684
- */
-
 #ifndef DRON_STRUCTS_H_
 #define DRON_STRUCTS_H_
 
@@ -64,3 +57,4 @@ typedef struct {
 } Telem_t;
 
 #endif /* DRON_STRUCTS_H_ */
+
