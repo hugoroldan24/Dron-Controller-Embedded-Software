@@ -1,9 +1,3 @@
-/*
- * FC_tasks.c
- *
- *  Created on: Sep 3, 2025
- *      Author: 34684
- */
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file FC_tasks.c															 *
@@ -372,3 +366,4 @@ static void xHandleSafetyTask(void* parameters)
     /* Execute autonomous landing procedure */
 	failsafe_execute_landing();
 }
+
