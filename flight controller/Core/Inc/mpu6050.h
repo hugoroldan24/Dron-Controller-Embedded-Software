@@ -1,10 +1,3 @@
-/*
- * mpu6050.h
- *
- *  Created on: Jul 23, 2025
- *      Author: 34684
- */
-
 #ifndef MPU6050_H_
 #define MPU6050_H_
 
@@ -15,3 +8,4 @@ int mpu_read_acc_gyr (float buf[6]);
 
 
 #endif /* MPU6050_H_ */
+
