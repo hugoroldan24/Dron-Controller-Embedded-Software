@@ -1,17 +1,3 @@
-/*
- * mpu6050.c
- *
- *  Created on: Jul 23, 2025
- *      Author: 34684
- */
-#include "FreeRTOS.h"
-#include "semphr.h"
-#include "stm32f411xe.h"
-#include "const.h"
-#include "i2c.h"
-#include "delay.h"
-#include <stdint.h>
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file mpu6050.c														   *
  * @brief																   *
@@ -23,6 +9,14 @@
  *  Pins used:															   *
  *   PA4																   *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include "FreeRTOS.h"
+#include "semphr.h"
+#include "stm32f411xe.h"
+#include "const.h"
+#include "i2c.h"
+#include "delay.h"
+#include <stdint.h>
 
 static uint16_t		   	   fifo_count;
 static volatile BaseType_t pxHigherPriorityTaskWoken;
@@ -190,3 +184,4 @@ void EXTI4_IRQHandler()
     /* Request context switch if a higher priority task was woken */
 	portYIELD_FROM_ISR(pxHigherPriorityTaskWoken);
 }
+
