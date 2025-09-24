@@ -1,15 +1,3 @@
-/*
- * motor_mixer.c
- *
- *
- *  Created on: Aug 4, 2025
- *      Author: 34684
- */
-
-#include "const.h"
-#include "util.h"
-#include "dron_structs.h"
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file motor_mixer.c															     *
  * @brief																			 *
@@ -17,6 +5,10 @@
  * Applies motor mixing logic considering pitch, roll, and yaw rate, and constrains  *
  * the PWM values to valid ranges for the motor controllers.				         *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include "const.h"
+#include "util.h"
+#include "dron_structs.h"
 
 /**
  * @brief Mixes throttle and PID outputs to calculate individual motor PWM values.
@@ -50,3 +42,4 @@ void motor_mixer(PID_Outputs_t pid_outputs, float throttle, PWM_Outputs_t* ccr)
 	ccr->motor4_pwm =	(uint16_t) pwm4;
     /* At this point, ccr contains the PWM values ready to be loaded into the timers' CCR registers */
 }
+
