@@ -46,12 +46,7 @@ QueueHandle_t 	  flight_data_queue;
 QueueHandle_t 	  pid_error_queue;
 SemaphoreHandle_t MPU_Semaphore;
 UserControl_t 	  joystick_data;
-static uint8_t FAILSAFE_ACTIVATED;
-
-typedef struct{
-	int32_t  preassure;
-	uint16_t battery_level;
-}Telemetry_t;
+static uint8_t    FAILSAFE_ACTIVATED;
 
 /**
  * @brief Initialize all peripherals used by the flight controller.
@@ -366,4 +361,5 @@ static void xHandleSafetyTask(void* parameters)
     /* Execute autonomous landing procedure */
 	failsafe_execute_landing();
 }
+
 
