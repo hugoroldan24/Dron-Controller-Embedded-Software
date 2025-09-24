@@ -1,10 +1,3 @@
-/*
- * MS5611.c
- *
- *  Created on: Jul 24, 2025
- *      Author: 34684
- */
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file MS5611.c																     *
  * @brief																		     *
@@ -149,3 +142,4 @@ static uint16_t get_prom_coeff(uint8_t maddr)
     /* Combine MSB and LSB into 16-bit coefficient */
 	return (((uint16_t)buf[0] << 8) | (uint16_t)buf[1]);
 }
+
