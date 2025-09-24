@@ -1,17 +1,3 @@
-/*
- * i2c.c
- *
- *  Created on: Jul 21, 2025
- *      Author: 34684
- */
-
-
-#include "stm32f411xe.h"
-#include <stdint.h>
-#include "const.h"
-#include "FreeRTOS.h"
-#include "task.h"
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file i2c.c																				   *
  *																							   *
@@ -27,6 +13,12 @@
  *PB6: SCL																					   *
  *PB7: SDA																			   		   *																					   *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include "stm32f411xe.h"
+#include <stdint.h>
+#include "const.h"
+#include "FreeRTOS.h"
+#include "task.h"
 
 static uint8_t set_rise_time(uint8_t tpclk);
 static uint16_t set_CCR(uint32_t desired_period);
@@ -339,5 +331,6 @@ static void init_variables()
 	RW = I2C_WRITE;
 	i2c_state = EV5;
 }
+
 
 
