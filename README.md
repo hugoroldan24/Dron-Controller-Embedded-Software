@@ -1,6 +1,4 @@
-# ✈️ Drone Controller Embedded Software  
-
-## Introduction  
+# ✈️ Drone Controller Embedded Software ✈️  
 
 This project is focused on developing **embedded software in Embedded C** for a complete drone system: the **flight controller**, the **RF transmitter**, and the **RF receiver**.  
 Currently, only the **flight controller firmware** is available. It is implemented on an **STM32F4** microcontroller and runs on **FreeRTOS**.  
