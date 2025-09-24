@@ -1,10 +1,3 @@
-/*
- * drivers.h
- *
- *  Created on: Sep 3, 2025
- *      Author: 34684
- */
-
 #ifndef DRIVERS_H_
 #define DRIVERS_H_
 
@@ -17,3 +10,4 @@
 #include "MS5611.h"
 
 #endif /* DRIVERS_H_ */
+
