@@ -1,3 +1,16 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *  
+ * @file dron_structs.h																				 *
+ * @brief Data structures used across the FC firmware to improve data organization and readability.  *
+ *																									 *
+ * This file defines several structs and unions that are used to represent:							 *
+ * - The drone's attitude (roll, pitch, yaw rate)													 *
+ * - Flight messages containing attitude and throttle information									 *
+ * - User input from joysticks																		 *
+ * - PWM outputs for motors																			 *
+ * - PID controller outputs and configuration														 *
+ * - Telemetry data including battery level and pressure											 *	
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
 #ifndef DRON_STRUCTS_H_
 #define DRON_STRUCTS_H_
 
@@ -40,15 +53,15 @@ typedef struct{
 } PID_Outputs_t;
 
 typedef struct {
-    float kp;           // Ganancia proporcional
-    float ki;           // Ganancia integral
-    float kd;           // Ganancia derivativa
+    float kp;           // Proportional gain
+    float ki;           // Integral gain
+    float kd;           // Derivative gain
 
-    float integral;     // Acumulador de término integral
-    float prev_error;   // Error anterior (para cálculo derivativo)
+    float integral;     // Integral term accumulator
+    float prev_error;   // Previous error (for derivative calculation)
 
-    float output_min;   // Límite inferior de la salida (-1)
-    float output_max;   // Límite superior de la salida (1)
+    float output_min;   // Minimum output limit (-1)
+    float output_max;   // Maximum output limit (1)
 } PID_Controller_t;
 
 typedef struct {
@@ -57,4 +70,5 @@ typedef struct {
 } Telem_t;
 
 #endif /* DRON_STRUCTS_H_ */
+
 
