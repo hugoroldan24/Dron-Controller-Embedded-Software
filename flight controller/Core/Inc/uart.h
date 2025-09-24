@@ -1,10 +1,3 @@
-/*
- * uart.h
- *
- *  Created on: Jul 19, 2025
- *      Author: 34684
- */
-
 #ifndef UART_H_
 #define UART_H_
 
@@ -16,3 +9,4 @@ void 	uart1_send_dma(uint8_t *data, uint32_t len);
 uint8_t uart1_read_dma(uint8_t* buf, uint16_t len);
 
 #endif /* UART_H_ */
+
