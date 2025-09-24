@@ -1,9 +1,3 @@
-/*
- * joystick_mapper.h
- *
- *  Created on: Aug 4, 2025
- *      Author: 34684
- */
 
 #ifndef JOYSTICK_MAPPER_H_
 #define JOYSTICK_MAPPER_H_
@@ -16,3 +10,4 @@ void map_joystick_to_setpoint(UserControl_t input, FlightMessage_t* setpoint);
 
 
 #endif /* JOYSTICK_MAPPER_H_ */
+
