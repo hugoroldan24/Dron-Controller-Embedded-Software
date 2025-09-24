@@ -1,10 +1,3 @@
-/*
- * util.c
- *
- *  Created on: Aug 5, 2025
- *      Author: 34684
- */
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file util.c																		 *
  * @brief Utility functions used throughout the project.							 *
@@ -94,5 +87,6 @@ void constrain(float* value, float low, float high)
 		*value = high;
 	}
 }
+
 
 
