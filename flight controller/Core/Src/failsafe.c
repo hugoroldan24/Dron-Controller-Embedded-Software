@@ -1,10 +1,3 @@
-/*
- * failsafe.c
- *
- *  Created on: Aug 19, 2025
- *      Author: 34684
- */
-
 /*************************************************************************
  * @file failsafe.c
  * @brief
@@ -81,3 +74,4 @@ void disable_periph(void)
     /* Disable clock access to USART1 to save power */
 	RCC->APB2ENR &= ~RCC_APB2ENR_USART1EN;
 }
+
