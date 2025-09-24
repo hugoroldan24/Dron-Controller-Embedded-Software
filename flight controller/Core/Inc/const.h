@@ -1,11 +1,10 @@
-/***********************************************************************************************
- * const.h
- *
- * Brief Description:
- *   This file contains project-wide constant definitions grouped by module/area for
- *   clarity and maintainability. Constants include clock settings, communication commands,
- *   peripheral addresses, and configuration parameters.
- ***********************************************************************************************/
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+ * @file const.h                                                                             *
+ * @brief                                                                                    *
+ *   This file contains project-wide constant definitions grouped by module/area for         *
+ *   clarity and maintainability. Constants include clock settings, communication commands,  *
+ *   peripheral addresses, and configuration parameters.                                     *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
 
 #ifndef CONST_H_
 #define CONST_H_
@@ -13,31 +12,28 @@
 #include <stdint.h>
 
 /*==========================================================================================*/
-/*                                  SYSTEM CLOCK                                             */
+/*                                  SYSTEM CLOCK                                            */
 /*==========================================================================================*/
 
 #define HSE_CLK             8000000UL   /* External crystal oscillator frequency */
 #define SYS_CLK             100000000UL /* System clock frequency after PLL       */
 
-#define APB2_CLK            SYS_CLK      		 /* APB2 bus clock frequency              		*/
+#define APB2_CLK            SYS_CLK      		 /* APB2 bus clock frequency              	   	 */
 #define APB2_CLK_MHZ		(APB2_CLK/1000000UL) /* APB1 bus clock frequency in MHz              */
-#define APB1_CLK            (SYS_CLK/2U) 		 /* APB1 bus clock frequency           		    */
+#define APB1_CLK            (SYS_CLK/2U) 		 /* APB1 bus clock frequency           		     */
 #define APB1_CLK_MHZ		(APB1_CLK/1000000UL) /* APB1 bus clock frequency in MHz              */
 #define APB1_PERIOD_NS		(1000UL/APB1_CLK_MHZ)
 
 /*==========================================================================================*/
-/*                                 UART SETTINGS                                             */
+/*                                 UART SETTINGS                                            */
 /*==========================================================================================*/
 
-#define BAUD      9600UL       /* UART baud rate                        */
+#define BAUD      9600UL        /* UART baud rate         */
 #define UART_BUF_SIZE 128U
 #define NUM_AXIS		4U		/* 2 joysticks => 4 axis */
 
-
 #define TELEM_FRAME_SIZE 4U
 #define FRAME_LEN        5U
-
-
 
 /*==========================================================================================*/
 /*                                  I2C SETTINGS                                            */
@@ -48,12 +44,12 @@
 #define READ                0U
 #define WRITE               1U
 #define COMMAND             2U
-#define MAX_FM              300U          /* I2C max frequency margin (ns)         */
-#define DESIRED_T			2500		  /* I2C desired period in ns (400 kHz) 		*/
+#define MAX_FM              300U          /* I2C max frequency margin (ns)       */
+#define DESIRED_T			2500		  /* I2C desired period in ns (400 kHz)  */
 #define DUMMY               0xFF    	  /* Dummy byte for SPI/I2C transfers    */
 
-#define I2C_SM_100KHZ		250			/* Esto es resolviendo la ecuacion de CCR[11:0] en cc register */
-#define SM_MAX_RISE_TIME	(50 +1)		/* Este valor es tal que hace que el rise time sea el máximo que nos especifican */
+#define I2C_SM_100KHZ      250       /* Value calculated from the CCR[11:0] equation for 100 kHz I2C standard mode */
+#define SM_MAX_RISE_TIME   (50 + 1)  /* Maximum rise time as specified by the I2C standard */
 
 /*==========================================================================================*/
 /*                               I2C STATE MACHINE                                          */
@@ -83,10 +79,11 @@ typedef enum {
 #define USER_CTRL_R             (0x6A)    /* User control register               */
 #define PWR_MGMT_1_R            (0x6B)    /* Power management 1 register         */
 #define SIGNAL_PATH_RESET_R		(0x68)	  /* Signal path reset register			 */
-#define	INT_PIN_CFG_R			(0x37)
-#define WHO_AM_I_R				(0x75)
-#define	FIFO_COUNT_H_R			(0x72)
-#define	FIFO_COUNT_L_R			(0x73)
+#define INT_PIN_CFG_R           (0x37)    /* Interrupt Pin / Bypass Enable Configuration register */
+#define WHO_AM_I_R              (0x75)    /* Device identification register, returns 0x68 for MPU6050 */
+#define FIFO_COUNT_H_R          (0x72)    /* High byte of the FIFO sample count (number of bytes in FIFO) */
+#define FIFO_COUNT_L_R          (0x73)    /* Low byte of the FIFO sample count */
+
 
 
 #define AFS_SEL                 (1U<<3)   	/* Accelerometer full-scale select (4g)*/
@@ -98,11 +95,10 @@ typedef enum {
 #define SMPLRT_DIV              (0x00)      /* Sample rate divider value           */
 #define DLPF_CFG                (1U<<1)     /* Digital low-pass filter configuration*/
 #define FS_SEL                  (0x00)      /* Gyroscope full-scale select (±250°/s)*/
-#define FIFO_OFLOW_INT			(1U<<4)		/* Bit en el INT_STATUS que te dice si hay oflow en el FIFO */
-
+#define FIFO_OFLOW_INT       (1U<<4)        /* Bit in the INT_STATUS register indicating a FIFO overflow */
 #define	ACC_SCALE_FACTOR	    8192.0f		/* 4 g */
 #define GYR_SCALE_FACTOR		131.0f		/* +-250 º/s */
-#define FIFO_POLL_US			200			/* us que esperamos para comprobar que el fifo está con los bytes que tocan */
+#define FIFO_POLL_US       200              /* Microseconds to wait before checking that the FIFO has the expected number of bytes */
 
 /*==========================================================================================*/
 /*                             MS5611 BAROMETER CONSTANTS                                   */
@@ -131,8 +127,8 @@ typedef enum {
 #define ESC_PWM_PERIOD 			5000U			/* 5 ms period must be configured in the ESC firmware */
 #define IDLE_PULSE				1000U			/* 1 ms wide pulse will make the motors be in idle state */
 #define UPDATE_REG_PERIOD		4000U			/* Every 4 ms we will update the CCR registes 			*/
-#define PWM_MIN					1000U  		    /* Ancho del pulso PWM mínimo */
-#define PWM_MAX					2000U  			/* Ancho del pulso PWM máximo */
+#define PWM_MIN                1000U            /* Minimum PWM pulse width */
+#define PWM_MAX                2000U            /* Maximum PWM pulse width */
 
 /*==========================================================================================*/
 /*                               FILTER				                                        */
@@ -171,14 +167,14 @@ typedef enum {
 
 #define JOY_MIN         0
 #define JOY_MAX         255
-#define JOY_MID         127  // puedes ajustar según calibración
+#define JOY_MID         127 
 
-#define DESCENT_THROTTLE  0 // Este es el valor del eje de joystick correspondiente al throttle que nos hará descender poco a poco al dron
+#define DESCENT_THROTTLE  0 
 #define HOVER_THROTTLE    0
 #define NO_THROTTLE       0
 
-#define ANGLE_MAX_DEG   30.0f   // roll/pitch máximo permitido, osea tu con el joystick no podras inclinar el dron mas de esos grados
-#define YAW_RATE_MAX    100.0f  // grados/segundo que puede llegar a girar el dron con los joysticks
+#define ANGLE_MAX_DEG   30.0f   
+#define YAW_RATE_MAX    100.0f  
 
 #define ANGLE_SLOPE			((float)(2*ANGLE_MAX_DEG)/JOY_MAX)
 #define ANGLE_OFFSET		(-ANGLE_MAX_DEG)
@@ -189,13 +185,11 @@ typedef enum {
 #define THROTTLE_OFFSET		(PWM_MIN + PID_MARGIN)
 #define THROTTLE_SLOPE		((float)(PWM_MAX - PID_MARGIN)- THROTTLE_OFFSET)
 
-#define PID_MARGIN			200U   /* Margen que dejamos en el throttle para correción PID (puede que dependa de los máximos del PID */
+#define PID_MARGIN             200U    /* Margin left in the throttle for PID correction (may depend on the PID maximum output) */
 
-/* Para el mapeo, deberé centrarlo en JOY_MID el cual deberá estar calibrado (tomar media de meustras al inicio) */
-#define MAP_JOYSTICK_TO_ANGLE(joy)		((float)(ANGLE_SLOPE*joy) + ANGLE_OFFSET)		/* -30 to +30 deg	  */
-#define MAP_JOYSTICK_TO_YAW(joy)		((float)(YAW_SLOPE*joy) + YAW_OFFSET)			/* -100 to +100 deg/s */
-#define MAP_JOYSTICK_TO_THROTTLE(joy)	(((float)joy/JOY_MAX)*THROTTLE_SLOPE + THROTTLE_OFFSET)							/* 0.0 to 1.0		  */
-
+#define MAP_JOYSTICK_TO_ANGLE(joy)		((float)(ANGLE_SLOPE*joy) + ANGLE_OFFSET)		        /* -30 to +30 deg	  */
+#define MAP_JOYSTICK_TO_YAW(joy)		((float)(YAW_SLOPE*joy) + YAW_OFFSET)			        /* -100 to +100 deg/s */
+#define MAP_JOYSTICK_TO_THROTTLE(joy)	(((float)joy/JOY_MAX)*THROTTLE_SLOPE + THROTTLE_OFFSET) /* 0.0 to 1.0		  */
 
 /*==========================================================================================*/
 /*                              BATTERY	LECTURE					                            */
@@ -205,7 +199,7 @@ typedef enum {
 
 #define ADC_MAX_VALUE   4096.0f
 #define VREF            3.3f
-#define DIVIDER_FACTOR  2.0f/*Esto es el divisor por el cual hemos bajado el voltage de la bateria para que pueda ser leído por el MCU */
+#define DIVIDER_FACTOR  2.0f   /* This is the voltage divider used to scale down the battery voltage so it can be read by the MCU */
 
 #define BATTERY_MAX_V  4.2f
 #define BATTERY_SAFE_V 3.6f /* When we read this voltage, it means it's time to land */
@@ -215,5 +209,6 @@ typedef enum {
 #define SETPOINT 1
 #define IMU		 0
 #endif /* CONST_H_ */
+
 
 
