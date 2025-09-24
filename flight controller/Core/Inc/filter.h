@@ -1,10 +1,3 @@
-/*
- * filter.h
- *
- *  Created on: Jul 30, 2025
- *      Author: 34684
- */
-
 #ifndef FILTER_H_
 #define FILTER_H_
 
@@ -14,3 +7,4 @@ void computeAttitudeFromIMU(float imu_data[6], Attitude_t* attitude, uint32_t* l
 
 
 #endif /* FILTER_H_ */
+
