@@ -1,10 +1,3 @@
-/*
- * pid_control.c
- *
- *  Created on: Aug 1, 2025
- *      Author: 34684
- */
-
 /*  * * * * * * * * * * * * * * * * * * * * * * * * * * *  * * * * * * * * * * * *
  * @file pid_control.c															 *
  * @brief																	     *
@@ -83,6 +76,7 @@ float compute_PID(float error, float dt, PID_Controller_t* pid_params)
 
     return output;
 }
+
 
 
 
