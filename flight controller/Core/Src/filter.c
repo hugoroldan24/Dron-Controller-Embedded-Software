@@ -1,10 +1,3 @@
-/*
- * filter.c
- *
- *  Created on: Jul 30, 2025
- *      Author: 34684
- */
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file filter.c															   *
  * @brief																	   *
@@ -60,3 +53,4 @@ void computeAttitudeFromIMU(float imu_data[6], Attitude_t* attitude,uint32_t* la
     attitude->pitch    = pitch;
     attitude->yaw_rate = yaw;
 }
+
