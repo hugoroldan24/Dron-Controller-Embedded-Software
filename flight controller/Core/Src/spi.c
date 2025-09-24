@@ -1,10 +1,3 @@
-/*
- * spi.c
- *
- *  Created on: Aug 14, 2025
- *      Author: 34684
- */
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file spi.c																	   *
  * @brief															               *																			   *
@@ -244,3 +237,4 @@ void SPI2_IRQHandler(void)
 		temp = SPI2->SR;
 	}
 }
+
