@@ -1,10 +1,3 @@
-/*
- * telemetry.c
- *
- *  Created on: Aug 5, 2025
- *      Author: 34684
- */
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file telemetry.c																			   *
  * @brief																						   *
@@ -91,5 +84,6 @@ static void ProcessBatteryAndAltitude(uint16_t raw_battery, int32_t raw_preassur
 	telemetry_data[2]  =  (uint8_t)height;
 	telemetry_data[3]  =  (uint8_t)((height-telemetry_data[2])*10);
 }
+
 
 
