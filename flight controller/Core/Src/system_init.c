@@ -1,10 +1,3 @@
-/*
- * system_clock.c
- *
- *  Created on: Jul 22, 2025
- *      Author: 34684
- */
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file system_init.c												         *
  * @brief																	 *
@@ -131,3 +124,4 @@ static void FPU_Enable(void)
 	__DSB();
 	__ISB();
 }
+
