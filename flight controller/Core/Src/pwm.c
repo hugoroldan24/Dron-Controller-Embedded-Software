@@ -1,9 +1,3 @@
-/*
- * pwm.c
- *
- *  Created on: Jul 27, 2025
- *      Author: 34684
- */
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file pwm.c																 *
@@ -156,5 +150,6 @@ void TIM4_IRQHandler(void)
 		TIM3->CCR4 = ccr.motor4_pwm;
 	}
 }
+
 
 
