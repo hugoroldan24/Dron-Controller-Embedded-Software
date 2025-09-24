@@ -142,6 +142,7 @@ typedef enum {
 /*                               PID PARAMETERS				                                */
 /*==========================================================================================*/
 
+/* To be completed */
 #define ROLL_KP				0
 #define ROLL_KI				0
 #define ROLL_KD				0
@@ -169,6 +170,7 @@ typedef enum {
 #define JOY_MAX         255
 #define JOY_MID         127 
 
+/* To be completed */
 #define DESCENT_THROTTLE  0 
 #define HOVER_THROTTLE    0
 #define NO_THROTTLE       0
@@ -209,6 +211,7 @@ typedef enum {
 #define SETPOINT 1
 #define IMU		 0
 #endif /* CONST_H_ */
+
 
 
 
