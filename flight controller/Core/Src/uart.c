@@ -1,17 +1,3 @@
-/*
- * uart.c
- *
- *  Created on: Jul 19, 2025
- *      Author: Hugo Roldan Lopez
- */
-#include <stdint.h>
-#include "const.h"
-#include "stm32f411xe.h"
-#include "util.h"
-#include <string.h>
-#include "FreeRTOS.h"
-#include "task.h"
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file uart.c																			 *
  * @brief																				 *
@@ -25,6 +11,14 @@
  * PA9:  TX																				 *
  * PA10: RX																				 *
  * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+#include <stdint.h>
+#include "const.h"
+#include "stm32f411xe.h"
+#include "util.h"
+#include <string.h>
+#include "FreeRTOS.h"
+#include "task.h"
 
 static void uart_set_baudrate(USART_TypeDef *USARTx, uint32_t PeriphClk, uint32_t BaudRate);
 static void dma2_receiver_init(uint32_t src, uint32_t dst1, uint32_t dst2, uint32_t len);
@@ -325,6 +319,7 @@ void DMA2_Stream7_IRQHandler(void)
 		DMA2_Stream7_callback();
 	}
 }
+
 
 
 
