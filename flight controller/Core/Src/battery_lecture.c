@@ -1,10 +1,3 @@
-/*
- * battery_lecture.c
- *
- *  Created on: Aug 13, 2025
- *      Author: 34684
- */
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file battery_lecture.c																					 *
  * @brief																								     *
@@ -122,3 +115,4 @@ void ADC_IRQHandler(void)
 		adc_callback();
 	}
 }
+
