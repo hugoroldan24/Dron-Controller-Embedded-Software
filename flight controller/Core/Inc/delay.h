@@ -1,10 +1,3 @@
-/*
- * delay.h
- *
- *  Created on: Jul 26, 2025
- *      Author: 34684
- */
-
 #ifndef DELAY_H_
 #define DELAY_H_
 
@@ -14,3 +7,4 @@ void delay_us(uint32_t us);
 
 
 #endif /* DELAY_H_ */
+
