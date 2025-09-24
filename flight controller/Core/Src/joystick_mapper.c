@@ -1,10 +1,3 @@
-/*
- * joystick_maper.c
- *
- *  Created on: Aug 1, 2025
- *      Author: 34684
- */
-
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
  * @file joystick_mapper.c														 *
  * @brief																		 *
@@ -43,4 +36,5 @@ void map_joystick_to_setpoint(UserControl_t input, FlightMessage_t* setpoint)
 	setpoint->attitude.yaw_rate = 	 MAP_JOYSTICK_TO_YAW(input.left_x_axis);      /* Map left joystick horizontal (X) to yaw rate */
 	setpoint->throttle 			=    MAP_JOYSTICK_TO_THROTTLE(input.left_y_axis); /* Map left joystick vertical (Y) to throttle */
 }
+
 
