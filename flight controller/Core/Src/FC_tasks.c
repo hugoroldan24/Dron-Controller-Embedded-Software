@@ -80,7 +80,7 @@ void createTasks()
 
     /* Create RC receiver task (medium priority) */
 	status = xTaskCreate(xHandleRCRxTask,"RC_RX",200,NULL,2,&RC_RX_ID); /* Task 1 */
-	configASSERT(status == pdPASS); /* Esto es solo para quedarnos atrapados en un bucle si no se genera bien la tarea */
+	configASSERT(status == pdPASS); 
 
     /* Create IMU processing task (medium priority) */
 	status = xTaskCreate(xHandleIMUTask,"IMU",200,NULL,2,&IMU_ID);
@@ -107,7 +107,7 @@ void createTasks()
 	configASSERT(status == pdPASS);
 
     /* Create queues for inter-task communication */
-	telem_queue = xQueueCreate(6,sizeof(Telemetry_t)); // Creamos una cola de 6 elementos del tamaño del struct 6 por si acaso se metieran más
+	telem_queue = xQueueCreate(6,sizeof(Telemetry_t)); 
 	configASSERT(telem_queue != NULL);
 
 	flight_data_queue = xQueueCreate(6,sizeof(FlightMessage_t));
@@ -277,8 +277,7 @@ static void xHandleControlTask(void* parameters)
 	float dt;
 
 	start_PWM();
-	lastcall = get_time_now_us(); //Esto nos da el tiempo transcurrido desde que arrancamos el timer 2 */
-
+	lastcall = get_time_now_us();
 	while(1)
 	{
 		xQueueReceive(pid_error_queue,&pid_error,portMAX_DELAY);
@@ -289,7 +288,7 @@ static void xHandleControlTask(void* parameters)
 		output.pitch 	= compute_PID(pid_error.attitude.pitch, dt, &pitch_pid_params);
 		output.yaw_rate = compute_PID(pid_error.attitude.yaw_rate, dt, &yaw_pid_params);
 
-		motor_mixer(output,pid_error.throttle,&ccr); /* Hay que asegurarse que en menos de 4 ms, ccr está actualizado */
+		motor_mixer(output,pid_error.throttle,&ccr); 
 	}
 }
 
@@ -313,8 +312,8 @@ static void xHandleSensorsTask(void* parameters)
 	{
 		data.preassure     = read_preassure();
 		data.battery_level = read_battery();
-		xQueueSend(telem_queue, (void *)&data,portMAX_DELAY); //Esperamos a que haya espacio (si no hay)
-		vTaskDelayUntil(&xLastWakeTime,xFrequency); /* Despertamos la tarea cada 200 ms */
+		xQueueSend(telem_queue, (void *)&data,portMAX_DELAY); 
+		vTaskDelayUntil(&xLastWakeTime,xFrequency); 
 	}
 }
 
@@ -328,7 +327,7 @@ static void xHandleTelemetryTask(void* parameters)
 	Telem_t rx_data;
 	while(1)
 	{
-		xQueueReceive(telem_queue, &rx_data,portMAX_DELAY); // Esperamos a que haya algo en la cola
+		xQueueReceive(telem_queue, &rx_data,portMAX_DELAY); 
 		send_telemetry(rx_data);
 	}
 }
@@ -361,5 +360,6 @@ static void xHandleSafetyTask(void* parameters)
     /* Execute autonomous landing procedure */
 	failsafe_execute_landing();
 }
+
 
 
