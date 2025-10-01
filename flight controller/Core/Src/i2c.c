@@ -141,10 +141,7 @@ void i2c1_perform_action(uint8_t action, uint8_t addr, uint8_t maddr, int n, uin
 {
 	/* Wait until the I2C bus/peripheral is not busy from a previous transfer */
 	while (I2C1->SR2 & I2C_SR2_BUSY);
-
-	/* Enable I2C event and buffer interrupts so the ISR drives the transfer */
-	I2C1->CR2 |= (I2C_CR2_ITEVTEN | I2C_CR2_ITBUFEN);
-
+	
 	/* Load transaction parameters into driver-managed volatile variables */
 	slave_addr = addr;
 	starting_register = maddr;
@@ -331,6 +328,7 @@ static void init_variables()
 	RW = I2C_WRITE;
 	i2c_state = EV5;
 }
+
 
 
 
